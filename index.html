@@ -17,15 +17,15 @@
 var currentDate = new Date();
 var currentHour = currentDate.getHours();
 var currentMinute = currentDate.getMinutes();
+  if (currentMinute   < 10)
+    {
+        currentMinute = "0" + currentMinute;
+    }
 function myFunction2() {
     location.reload();
 }
 function myFunction() {
     var x = document.getElementById("shifts").value;
-    if (currentMinute   < 10)
-    {
-        currentMinute = "0" + currentMinute;
-    }
      var currentTime = currentHour + ":" + currentMinute;
 
     document.getElementById("time").innerHTML = "<button type=\"button\" onclick=\"myFunction2()\">Try again<\/button><br\/><br\/> Current time is " + currentTime  + " ET";
