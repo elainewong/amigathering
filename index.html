@@ -31,7 +31,7 @@ function myFunction() {
     document.getElementById("time").innerHTML = "<button type=\"button\" onclick=\"myFunction2()\">Try again<\/button><br\/><br\/> Current time is " + currentTime  + " ET";
     document.getElementById("nameofshift").innerHTML = "Your shift is " + x;
 
-        if((x=="Chase-1" || x=="Digi-1" || x=="Planning") && currentHour < 10)
+        if((x=="Chase-1" || x=="Digi News-1" || x=="Planning") && currentHour < 10)
             {
             document.getElementById("gathering").innerHTML = "You're supposed to be gathering if no one else has already dont it. Whip out that Capture login!";
             }
@@ -47,7 +47,7 @@ function myFunction() {
             document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
             }
 
-        else if (currentHour == 22 && x=="Digi News -3" )
+        else if (currentHour == 22 && x=="Digi News-3" )
             {
             document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
             }
@@ -95,9 +95,9 @@ Select your shift:
  <option value="Control 51-2">Control 51 -2</option>
  <option value="Chase-1">Chase - 1</option>
  <option value="Chase-2">Chase - 2</option>
- <option value="Digi News -1">Digi News - 1 </option>
- <option value="Digi News -2">Digi News - 2 </option>
- <option value="Digi News -3">Digi News - 3 </option>
+ <option value="Digi News-1">Digi News - 1 </option>
+ <option value="Digi News-2">Digi News - 2 </option>
+ <option value="Digi News-3">Digi News - 3 </option>
  <option value="Local Toronto">Local News - Toronto</option>
  <option value ="French Services">French services</option>
  <option value="National">National</option>
