@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<title>Am I supposed to be gathering?</title>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+var currentDate = new Date();
+var currentHour = currentDate.getHours();
+var currentMinute = currentDate.getMinutes();
+
+function myFunction() {
+    var x = document.getElementById("shifts").value;
+    if (currentMinute   < 10)
+    {
+        currentMinute = "0" + currentMinute;
+    }
+     var currentTime = currentHour + ":" + currentMinute;
+
+    document.getElementById("time").innerHTML = "Current time is " + currentTime  + " ET";
+    document.getElementById("nameofshift").innerHTML = "Your shift is " + x;
+
+        if((x=="Chase-1" || x=="Digi-1" || x=="Planning") && currentHour < 10)
+        {
+    document.getElementById("gathering").innerHTML = "You're supposed to be gathering if no one else has already dont it. Whip out that Capture login!";
+        }
+
+        else if((currentHour >=10 && currentHour < 14) && (x=="Chase-2"))
+        {
+
+    document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
+    
+        } 
+
+        else if ((currentHour >=14 && currentHour <22) && x=="News-3" ){
+    document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
+   
+
+        }
+
+                else if (currentHour>=22 && x=="Digi-3")
+        {
+document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
+   
+
+        }
+
+
+          else if ( x=="Control 51-1" || x=="Control 51-2"  ){
+    document.getElementById("gathering").innerHTML = "You're supposed to be in the control room with no access to a Capture station. Get someone at the desk to do it.";
+   
+
+        }
+
+      else if ( x=="Local Toronto"  ){
+    document.getElementById("gathering").innerHTML = "You do have access to Capture but chances are you're no where near it.";
+   
+
+        }
+
+
+        else if(x=="Greg Clarke"){
+
+            document.getElementById("nameofshift").innerHTML = "You're " + x + "<p> You'll do it anyway and then write a nice long note about it!";
+                    }
+
+
+        else{
+    document.getElementById("gathering").innerHTML = "You're <b>NOT </b> supposed to be gathering. But do help out when you can.";
+
+}
+}
+</script>
+
+</head>
+
+<body>
+<div class="container">
+<div class="jumbotron">
+
+<form>
+Select your shift:
+<select id="shifts">
+<option value="nothing"></option>
+ <option value="Control 51-1">Control 51-1</option>
+ <option value="Control 51-2">Control 51 -2</option>
+ <option value="Chase-1">Chase - 1</option>
+ <option value="Chase-2">Chase - 2</option>
+ <option value="Digi News -1">Digi News - 1 </option>
+ <option value="Digi News -2">Digi News - 2 </option>
+ <option value="Digi News -3">Digi News - 3 </option>
+ <option value="Local Toronto">Local News - Toronto</option>
+ <option value ="French Services">French services</option>
+ <option value="National">National</option>
+ <option value="News-3">News - 3 </option>
+ <option value="News Now Vancouver">News Now - Vancouver</option>
+ <option value="Planning">Planning</option>
+<option value="Supervisor">Supervisior</option>
+<option value="Greg Clarke">Greg Clarke</option>
+</select>
+</form>
+
+
+<h2>Click the button to see if you're supposed to be gathering.</h2>
+
+<button type="button" class="btn btn-lg btn-success"onclick="myFunction()">Check your shift!</button>
+<p>&nbsp;</p>
+<p id="time"></p>
+<p id="nameofshift"></p>
+<p id="gathering"></p>
+</div>
+</div>
+</body>
+</html>
