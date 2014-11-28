@@ -17,62 +17,69 @@
 var currentDate = new Date();
 var currentHour = currentDate.getHours();
 var currentMinute = currentDate.getMinutes();
-  if (currentMinute   < 10)
+ if (currentMinute   < 10)
     {
         currentMinute = "0" + currentMinute;
     }
+
 function myFunction2() {
     location.reload();
 }
 function myFunction() {
     var x = document.getElementById("shifts").value;
      var currentTime = currentHour + ":" + currentMinute;
+     var addButton = "<br\/><br\/><button type=\"button\" onclick=\"myFunction2()\">Try again<\/button><br\/><br\/>";
 
-    document.getElementById("time").innerHTML = "<button type=\"button\" onclick=\"myFunction2()\">Try again<\/button><br\/><br\/> Current time is " + currentTime  + " ET";
+    document.getElementById("time").innerHTML = "Current time is " + currentTime  + " ET";
     document.getElementById("nameofshift").innerHTML = "Your shift is " + x;
 
-        if((x=="Chase-1" || x=="Digi News-1" || x=="Planning") && currentHour < 10)
+        if(((x=="Chase-1" || x=="Digi News-1" || x=="Planning") && currentHour < 10) ||((currentHour >=10 && currentHour < 14) && (x=="Chase-2")) || ((currentHour >= 14 && currentHour <22) && x=="News-3" ) ||  (currentHour >= 22 && x=="Digi News-3" ) ) 
             {
-            document.getElementById("gathering").innerHTML = "You're supposed to be gathering if no one else has already dont it. Whip out that Capture login!";
+            document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!" + addButton;
             }
 
-        else if((currentHour >=10 && currentHour < 14) && (x=="Chase-2"))
+        else if (currentHour == 16 && x=="Control 51-2")
             {
-
-             document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
-             } 
-
-        else if ((currentHour >= 14 && currentHour <22) && x=="News-3" )
-            {
-            document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
-            }
-
-        else if (currentHour >= 22 && x=="Digi News-3" )
-            {
-            document.getElementById("gathering").innerHTML = "You're supposed to be gathering. Whip out that Capture login!";
-            }
-
-
-
-          else if (x=="Control 51-1" || x=="Control 51-2")
-            {
-            document.getElementById("gathering").innerHTML = "You're supposed to be in the control room with no access to a Capture station. Get someone at the desk to do it.";
+            document.getElementById("gathering").innerHTML = "No gathering for you, but time to run over and do some Exchange pretapes (if needed)." + addButton;
              }
 
-      else if (x=="Local Toronto")
+        else if (currentHour == 16 && x=="National")
             {
-            document.getElementById("gathering").innerHTML = "You do have access to Capture but chances are you're nowhere near it.";
+            document.getElementById("gathering").innerHTML = "No gathering for you, but time to run up to Control 51 and handle that fun last hour of News Now." + addButton;
+             }
+
+
+        else if (x=="Control 51-1" || x=="Control 51-2")
+            {
+            document.getElementById("gathering").innerHTML = "You're supposed to be in the control room with no access to a Capture station. Get someone at the desk to do it." + addButton;
+             }
+        else if (currentHour >= 21 && x=="News Now Vancouver")
+            {
+            document.getElementById("gathering").innerHTML = "If everyone else is busy, you gotta do it. But, more importantly, it's time to get cracking on that morning prep note!" + addButton;
+             }
+        else if (currentHour == 16 && x=="Control 51-2")
+            {
+            document.getElementById("gathering").innerHTML = "No gathering for you, but time to run over and do some Exchange pretapes (if needed)." + addButton;
+             }
+
+        else if (x=="Local Toronto")
+            {
+            document.getElementById("gathering").innerHTML = "You do have access to a Capture station but chances are you're nowhere near it."+ addButton;
             }
 
+        else if (x=="French Services")
+            {
+            document.getElementById("gathering").innerHTML = "Oui. Vous devriez utiliser la Pool neuf!"+ addButton;
+            }
 
         else if(x=="Greg Clarke")
             {
-            document.getElementById("nameofshift").innerHTML = "You're " + x + "<p> You'll do it anyway and then write a nice long note about it!";
+            document.getElementById("nameofshift").innerHTML = "You're " + x + "<p> You'll do it anyway and then write a nice long note about it!"+ addButton;
             }
 
 
         else{
-                document.getElementById("gathering").innerHTML = "You're <b>NOT </b> supposed to be gathering. But do help out when you can.";
+                document.getElementById("gathering").innerHTML = "You're <b>NOT</b> supposed to be gathering. But do help out when you can."+ addButton;
 
             }
 
@@ -87,10 +94,13 @@ function myFunction() {
 <div class="container">
 <div class="jumbotron">
 
+<h2>Click the button to see if you're supposed to be gathering.</h2>
+
 <form>
+
 Select your shift:
 <select id="shifts">
-<option value="nothing"></option>
+
  <option value="Control 51-1">Control 51-1</option>
  <option value="Control 51-2">Control 51 -2</option>
  <option value="Chase-1">Chase - 1</option>
@@ -104,13 +114,12 @@ Select your shift:
  <option value="News-3">News - 3 </option>
  <option value="News Now Vancouver">News Now - Vancouver</option>
  <option value="Planning">Planning</option>
-<option value="Supervisor">Supervisior</option>
+<option value="Supervisor">Supervisor</option>
 <option value="Greg Clarke">Greg Clarke</option>
 </select>
 </form>
 
-
-<h2>Click the button to see if you're supposed to be gathering.</h2>
+<br/>
 
 <button type="button" class="btn btn-lg btn-success"onclick="myFunction()">Check your shift!</button>
 
